@@ -1,6 +1,10 @@
 <?php
-
+    // Limpiar todas las variables de sesión
+    $_SESSION = array();
+    
+    // Destruir la sesión
     session_destroy();
-    echo '<script>window.location = "ingreso";</script>';
-
+    
+    // Redirigir al usuario a la página de inicio
+    echo '<script> window.location = "index.php"; </script>';
 ?>

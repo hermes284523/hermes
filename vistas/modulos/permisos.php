@@ -1,25 +1,61 @@
-<!-- Content Wrapper. Contains page content -->
+<!-- permisos.php -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Permisos</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Permisos</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+  <section class="content-header">
+    <div class="container-fluid">
+      <h1 class="mb-3">PERMISOS</h1>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Pendientes <span class="badge badge-secondary">2</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reportes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Líder TIC</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Main content -->
-    <section class="content">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
 
-    </section>
-    <!-- /.content -->
+        <!-- Botones del lado izquierdo -->
+        <div class="col-md-3">
+          <div class="btn-group-vertical w-100">
+            <button class="btn btn-secondary text-left mb-2" >
+              <i class="fas fa-eye-slash mr-2"></i> Gestión de equipos
+            </button>
+            <button class="btn btn-secondary text-left mb-2" >
+              <i class="fas fa-eye-slash mr-2"></i> Solicitudes y autorizaciones
+            </button>
+            <button class="btn btn-secondary text-left mb-2" >
+              <i class="fas fa-eye-slash mr-2"></i> Devoluciones
+            </button>
+            <button class="btn btn-secondary text-left mb-2" >
+              <i class="fas fa-eye-slash mr-2"></i> Salidas
+            </button>
+          </div>
+        </div>
+
+        <!-- Tarjetas del lado derecho -->
+        <div class="col-md-9">
+          <div class="mb-3 p-3 bg-light rounded border">
+            <strong class="text-primary h5">Gestión de equipos</strong>
+          </div>
+          <div class="mb-3 p-3 bg-light rounded border">
+            <strong class="text-primary h5">Solicitudes y autorizaciones</strong>
+          </div>
+          <div class="mb-3 p-3 bg-light rounded border">
+            <strong class="text-primary h5">Devoluciones</strong>
+          </div>
+          <div class="mb-3 p-3 bg-light rounded border">
+            <strong class="text-primary h5">Salidas</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </div>
-<!-- /.content-wrapper -->

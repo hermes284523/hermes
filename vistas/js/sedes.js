@@ -1,25 +1,23 @@
-$(document).on("click", ".btnEditarSede", function(){
+$(document).on("click", ".btnEditarSede",function(){
     var idSede = $(this).attr("idSede");
-    //console.log("idSede: ", idSede); //Bloque de código para capturar el atributo id de sedes.php
+    console.log("idSede : ",idSede);
 
     var datos = new FormData();
-    datos.append("idSede", idSede);
+    datos.append("idSede", idSede); 
     $.ajax({
         url: "ajax/sedes.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(respuesta){
-            console.log("Respuesta: ", respuesta);
-            $("#nombreEditSede").val(respuesta["nombre_sede"]);
-            $("#direccionEditSede").val(respuesta["direccion"]);
-            $("#descripcionEditSede").val(respuesta["descripcion"]);
-            $("#idEditSede").val(respuesta["id_sede"]);
+        method : "POST",
+        data : datos,
+        cache : false,
+        contentType : false,
+        processData : false,
+        dataType : "json",
+        success : function(respuesta){
+            console.log("respuesta :", respuesta)
+            $(".#nombreEditSede").val(respuesta["nombre"]);
+            $(".#direccionEditSede").val(respuesta["direccion"]);
+            $(".#descripcionEditSede").val(respuesta["descripcion"]);
+            $(".#idEditSede").val(respuesta["id"]);
         }
     })
-}); 
-
-
+})

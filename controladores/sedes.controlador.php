@@ -1,76 +1,78 @@
 <?php
+class ControladorSedes {
 
-    Class ControladorSedes{
-        static public function ctrMostrarSedes($item, $valor){
-            $tabla = "sedes";
-            $respuesta = ModeloSedes::mdlMostrarSedes($tabla, $item, $valor);
+    /*=============================================
+    MOSTRAR SEDES
+    =============================================*/
+    static public function ctrMostrarSedes($item, $valor)
+    {
+        $tabla = "sedes";
+        $respuesta = ModeloSedes::mdlMostrarSedes($tabla, $item, $valor);
+        return $respuesta;
+    }
 
-            return $respuesta;
-        }
+    /*=============================================
+    CREAR SEDES
+    =============================================*/
 
-        static public function ctrCrearSedes(){
-            if(isset($_POST["nombreSede"]) && isset($_POST["direccionSede"]) && isset($_POST["descripcionSede"])){
-                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreSede"]) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccionSede"])){
 
-                    $tabla = "sedes";
-                    $datos = array(
-                        "nombre_sede" => $_POST["nombreSede"],
-                        "direccion" => $_POST["direccionSede"],
-                        "descripcion" => $_POST["descripcionSede"]
-                    );
+    static public function ctrCrearSede()
+    {
+        if (isset($_POST["nombreSede"]) && isset($_POST["direccionSede"] ) && isset($_POST["descripcionSede"])) {
+           if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/' , $_POST["nombreSede"]) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccionSede"])) {
+                $tabla = "sedes";
+                $datos = array(
+                    "nombre" => $_POST["nombreSede"],
+                    "direccion" => $_POST["direccionSede"],
+                    "descripcion" => $_POST["descripcionSede"]
+                );
+                $respuesta = ModeloSedes::mdlCrearSede($tabla, $datos);
 
-                    $respuesta = ModeloSedes::mdlCrearSedes($tabla, $datos);
-                    var_dump($respuesta);
-                    
-                    if($respuesta == "ok"){
-                        echo '<script>
+                if ($respuesta == "ok") {
+                    echo '<script>
                             Swal.fire({
                                 icon: "success",
-                                title: "Sede agregada con éxito!",
+                                title: "¡La sede ha sido creada correctamente!",
                                 showConfirmButton: true,
-                                confirmButton: "Cerrar"
+                                confirmButtonText: "Cerrar"
                             }).then((result) => {
-                                if(result.isConfirmed){
+                                if (result.value) {
                                     window.location = "sedes";
                                 }
                             });
-                        
                         </script>';
-                    } else {
-                        echo '<script>
-                            Swal.fire({
-                                icon: "error",
-                                title: "Error al agregar la Sede!",
-                                showConfirmButton: true,
-                                confirmButton: "Cerrar"
-                            }).then((result) => {
-                                if(result.isConfirmed){
-                                    window.location = "sedes";
-                                }
-                            });
-                        
-                        </script>';
-                    }
                 } else {
                     echo '<script>
                             Swal.fire({
                                 icon: "error",
-                                title: "Error!",
-                                text: "Cáracteres ingresados no admitidos...",
+                                title: "¡Error al crear la sede!",
                                 showConfirmButton: true,
-                                confirmButton: "Cerrar"
+                                confirmButtonText: "Cerrar"
                             }).then((result) => {
-                                if(result.isConfirmed){
+                                if (result.value) {
                                     window.location = "sedes";
                                 }
                             });
-                        
                         </script>';
                 }
+            } else {
+                echo '<script>
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location = "sedes";
+                            }
+                        });
+                    </script>';
+                
+                }
+
+                
+            
             }
         }
-
-        
-    }
-
-?>
+}

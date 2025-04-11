@@ -18,7 +18,7 @@
 
     if(isset($_POST["idReserva"])){
         $editar = new AjaxReservas();
-        $editar -> idSede = $_POST["idReserva"];
+        $editar -> idReserva = $_POST["idReserva"];
         $editar -> ajaxReserva();
     }
 

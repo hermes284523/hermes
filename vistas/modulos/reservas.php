@@ -84,7 +84,7 @@
                     <th>Disponibles</th>
                     <th>Acciones</th>
                     <th></th>
-                    <th></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -130,7 +130,7 @@
             <h3 class="card-title text-blue font-weight-bold">Solicitud</h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body p-0">
+          <div class="card-body p-0 nuevoProducto">
             <div class="table-responsive">
               <table class="table m-0">
                 <thead>
@@ -141,41 +141,10 @@
 
                   </tr>
                 </thead>
-                <tbody name="table2">
-                  <!-- <tr>
-                    <td><a class="text-dark">Portatil</a></td>
-                    <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong> 
-                      <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
-                    </td>
-                    <td>
-                      <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                       </button>
-                    </td>
-                  </tr> -->
+                <tbody >
+                 
 
-                  <!-- <tr>
-                    <td><a class="text-dark">Televisor</a></td>
-                    <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong> 
-                      <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
-                    </td>
-                    <td>
-                      <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                        </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a class="text-dark">VideoBeam</a></td>
-                    <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong>
-                      <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
-                    </td>
-                    <td>
-                      <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                        </button>
-                    </td>
-                  </tr> -->
+                  
 
                   <style>
                     /* Botón sin color de fondo y borde */
@@ -218,7 +187,7 @@
             <h3 class="card-title text-blue font-weight-bold">Herramientas</h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body p-0">
+          <div class="card-body p-0 nuevoProducto" >
             <div class="table-responsive">
               <table class="table m-0">
                 <thead>
@@ -228,7 +197,7 @@
                     <th>Disponibles</th>
                     <th>Acciones</th>
                     <th></th>
-                    <th></th>
+                    
                   </tr>
                 </thead>
                 <tbody>

@@ -79,47 +79,49 @@
               <table class="table m-0">
                 <thead>
                   <tr>
+                    <th>#</th>
                     <th>Descripcion</th>
                     <th>Disponibles</th>
                     <th>Acciones</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><a class="text-dark">Portatil</a></td>
-                    <td>12</td>
-                    <td>
-                      <!-- Botón con efecto hover y active -->
-                      <button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i> Agregar</button>
-                    </td>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
+                <?php
 
-                  </tr>
+                $item = null;
+                $valor = null;
+                $reservas = ControladorReservas::ctrMostrarReservas($item, $valor);
+                foreach ($reservas as $key => $value) {
+                    echo '<tr>
+                        <td>' . ($key + 1) . '</td>
+                        <td>' . $value["descripcion"] . '</td>
+                        <td>' . $value["disponibles"] . '</td>
+                        
+                        
+                        <td>';
+                    
+                        echo '<button class="btn btn-success btn-xs btnReserva" idReserva="' . $value["id"] . '"><i class="fas fa-plus"></i>Agregar</button>';
+                    
+                    
+                    echo '<td>
+                                <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id"]. '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
+                            </td>
+                        </tr>';
+                }
+                ?>
 
-                  <tr>
-                    <td><a class="text-dark">Televisor</a></td>
-                    <td>6</td>
-                    <td><button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i>
-                        Agregar</button></td>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
-                  </tr>
-                  <tr>
-                    <td><a class="text-dark">VideoBeam</a></td>
-                    <td>7</td>
-                    <td><button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i>
-                        Agregar</button></td>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
-          </div>
-          <!-- /.card-body -->
+                   
+                 </tbody>
+               </table>
+             </div>
+             <!-- /.table-responsive -->
+           </div>
+           <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-      </div>
+         <!-- /.card -->
+       </div>
 
       <!-- tabla de solicitud -->
       <div class="col-12 col-md-6"> <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
@@ -139,41 +141,41 @@
 
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody name="table2">
+                  <!-- <tr>
                     <td><a class="text-dark">Portatil</a></td>
                     <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong> <!-- Número en negrilla -->
+                      <strong>1</strong> 
                       <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
                     </td>
                     <td>
                       <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                        <!-- Icono de eliminar --></button>
+                       </button>
                     </td>
-                  </tr>
+                  </tr> -->
 
-                  <tr>
+                  <!-- <tr>
                     <td><a class="text-dark">Televisor</a></td>
                     <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong> <!-- Número en negrilla -->
+                      <strong>1</strong> 
                       <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
                     </td>
                     <td>
                       <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                        <!-- Icono de eliminar --></button>
+                        </button>
                     </td>
                   </tr>
                   <tr>
                     <td><a class="text-dark">VideoBeam</a></td>
                     <td><button class="circle-icon-small-transparent"><i class="fas fa-minus"></i></button>
-                      <strong>1</strong> <!-- Número en negrilla -->
+                      <strong>1</strong>
                       <button class="circle-icon-small-transparent"><i class="fas fa-plus"></i></button>
                     </td>
                     <td>
                       <button class="badge badge-danger btn btn-sm btn-danger"><i class="fas fa-times"></i>
-                        <!-- Icono de eliminar --></button>
+                        </button>
                     </td>
-                  </tr>
+                  </tr> -->
 
                   <style>
                     /* Botón sin color de fondo y borde */
@@ -221,37 +223,39 @@
               <table class="table m-0">
                 <thead>
                   <tr>
+                  <th>#</th>
                     <th>Descripcion</th>
                     <th>Disponibles</th>
                     <th>Acciones</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><a class="text-dark">Cable HDMI</a></td>
-                    <td>12</td>
-                    <td>
-                      <!-- Botón con efecto hover y active -->
-                      <button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i> Agregar</button>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
-                    </td>
-                  </tr>
+                <?php
 
-                  <tr>
-                    <td><a class="text-dark">Kit Herramientas</a></td>
-                    <td>6</td>
-                    <td><button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i>
-                        Agregar</button></td>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
-                  </tr>
-                  <tr>
-                    <td><a class="text-dark">Extension</a></td>
-                    <td>7</td>
-                    <td><button class="badge badge-dark btn btn-sm btn-dark"><i class="fas fa-plus"></i>
-                        Agregar</button></td>
-                    <td><span class="ml-2"><i class="fas fa-file-alt"></i></span></td>
-                  </tr>
+                $item = null;
+                $valor = null;
+                $reservas_h = ControladorReservas::ctrMostrarReservasH($item, $valor);
+                foreach ($reservas_h as $key => $value) {
+                    echo '<tr>
+                        <td>' . ($key + 1) . '</td>
+                        <td>' . $value["descripcion"] . '</td>
+                        <td>' . $value["disponibles"] . '</td>
+                        
+                        
+                        <td>';
+                    
+                        echo '<button class="btn btn-success btn-xs btnRserva" idReserva="' . $value["id_herramienta"] . '" estadoSede="Inactiva"><i class="fas fa-plus"></i>Agregar</button>';
+                    
+                    
+                    echo '<td>
+                                <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id_herramienta"]. '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
+                            </td>
+                        </tr>';
+                }
+                ?>
+                  
                 </tbody>
               </table>
             </div>

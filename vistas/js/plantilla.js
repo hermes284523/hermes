@@ -5,6 +5,7 @@ window.addEventListener("load", function(){
     initializeDataTable("#tblTraspasos");
     initializeDataTable("#tblAutorizaciones");
     initializeDataTable("#tblInmediatas");
+    
 });
 
 function initializeDataTable(selector){

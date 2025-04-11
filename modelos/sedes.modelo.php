@@ -40,6 +40,44 @@
                 $stmt = null;
             }
         }
+
+        static public function mdlEditarSede($tabla, $datos){
+            try{
+                $sql = "UPDATE $tabla SET nombre_sede = :nombre  , direccion = :direccion  , descripcion = :descripcion  WHERE id_sede = :id  " ;
+                $stmt = Conexion::conectar()->prepare($sql);
+                $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+                $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+                $stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+                $stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+
+                if($stmt->execute()){
+                    return "ok";
+                }else{
+                    return "error";
+                }
+            }catch (PDOException $e){
+                return "error :". $e->getMessage();
+            }finally{
+                $stmt -> closeCursor();
+                $stmt = null;
+            }
+        }
+
+        static public function mdlCambiarEstadoSede($valorId, $valorEstado){
+            $stmt = Conexion::conectar()->prepare("UPDATE sedes SET estado=:estado WHERE id_sede = :id_sede");
+            $stmt->bindParam("id_sede", $valorId, PDO::PARAM_INT);
+            $stmt->bindParam("estado", $valorEstado, PDO::PARAM_INT);
+
+            if($stmt->execute()){
+                return "ok";
+            }else{
+                return "error";
+            }
+
+            $stmt->closeCursor();
+            $stmt = null;
+
+        }
     }
 
 ?>

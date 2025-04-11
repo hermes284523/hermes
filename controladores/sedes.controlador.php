@@ -70,6 +70,69 @@
             }
         }
 
+        static public function ctrEditarSedes(){
+            if(isset($_POST['nombreEditSede']) && isset($_POST['direccionEditSede']) && isset($_POST['descripcionEditSede'])){
+
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreSede"]) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccionSede"])){
+                    $tabla = "sedes";
+                    $datos = array(
+                        "id"=> $_POST["idEditSede"],
+                        "nombre"=> $_POST["nombreEditSede"],
+                        "direccion"=> $_POST["direccionEditSede"],
+                        "desccripcion"=> $_POST["descripcionEditSede"],
+                    );
+                    $respuesta = ModeloSedes::mdlEditarSede($tabla, $datos);
+                    if($respuesta == "ok"){
+                        echo '<script>
+                            Swal.fire({
+                                icon: "success",
+                                title: "Sede ha sido actualizada con éxito!",
+                                showConfirmButton: true,
+                                confirmButton: "Cerrar"
+                            }).then((result) => {
+                                if(result.isConfirmed){
+                                    window.location = "sedes";
+                                }
+                            });
+                        
+                        </script>';}else{
+                            echo '<script>
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error al actualizar la Sede!",
+                                showConfirmButton: true,
+                                confirmButton: "Cerrar"
+                            }).then((result) => {
+                                if(result.isConfirmed){
+                                    window.location = "sedes";
+                                }
+                            });
+                        
+                        </script>';
+                        }
+                } else {
+                    echo '<script>
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error!",
+                                text: "Cáracteres ingresados no admitidos...",
+                                showConfirmButton: true,
+                                confirmButton: "Cerrar"
+                            }).then((result) => {
+                                if(result.isConfirmed){
+                                    window.location = "sedes";
+                                }
+                            });
+                        
+                        </script>';
+                }
+
+
+
+            }
+        }
+
+
         
     }
 

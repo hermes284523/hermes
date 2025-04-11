@@ -49,10 +49,10 @@
                                 <td>' . $value["descripcion"] . '</td>
                                 
                                 <td>';
-                            if ($value["estado"] == "Activa") {
-                                echo '<button class="btn btn-success btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="Inactiva">Activa</button>';
+                            if ($value["estado"] == "activa") {
+                                echo '<button class="btn btn-success btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="inactiva">Activa</button>';
                             } else {
-                                echo '<button class="btn btn-danger btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="Activa">Inactivo</button>';
+                                echo '<button class="btn btn-danger btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="activa">Inactivo</button>';
                             }
                             echo '<td>
                                         <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id_sede"]. '" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit"></i></button>
@@ -142,11 +142,19 @@
                         <label for="descripcionEditSede">Descripción</label>
                         <textarea class="form-control" id="descripcionEditSede" rows="3" placeholder="Ingrese una descripción"></textarea>
                     </div>
-                </form>
+                
             </div>
             <div class="modal-footer justify-content-start">
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
+            <?php
+
+            $item = null;
+            $valor = null;
+            $sedes = ControladorSedes::ctrEditarSedes($item, $valor);
+
+            ?>
+            </form>
         </div>
     </div>
 </div>

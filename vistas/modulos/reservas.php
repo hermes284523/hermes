@@ -64,87 +64,151 @@
       </div>
     </div>
 
+    <!-- contenedor flex para Equipos y Solicitud -->
+    <div class="d-flex flex-wrap justify-content-start">
+      <!-- tabla de equipos -->
+      <div class="p-2" style="flex: 1; min-width: 300px;">
+        <!-- TABLE: LATEST ORDERS (Primera tabla) -->
+        <div class="col-12 col-md-12 order-1 order-md-1">
+          <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h3 class="card-title text-blue font-weight-bold">Equipos</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table m-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Descripcion</th>
+                      <th>Disponibles</th>
+                      <th>Acciones</th>
+                      <th></th>
 
-    <!-- tabla de equipos -->
-    <div class="row">
-      <!-- TABLE: LATEST ORDERS (Primera tabla) -->
-      <div class="col-12 col-md-6"> <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
-        <div class="card">
-          <div class="card-header border-transparent">
-            <h3 class="card-title text-blue font-weight-bold">Equipos</h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body p-0">
-            <div class="table-responsive">
-              <table class="table m-0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Descripcion</th>
-                    <th>Disponibles</th>
-                    <th>Acciones</th>
-                    <th></th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
 
-                $item = null;
-                $valor = null;
-                $reservas = ControladorReservas::ctrMostrarReservas($item, $valor);
-                foreach ($reservas as $key => $value) {
-                    echo '<tr>
+                    $item = null;
+                    $valor = null;
+                    $reservas = ControladorReservas::ctrMostrarReservas($item, $valor);
+                    foreach ($reservas as $key => $value) {
+                      echo '<tr>
                         <td>' . ($key + 1) . '</td>
                         <td>' . $value["descripcion"] . '</td>
                         <td>' . $value["disponibles"] . '</td>
                         
                         
                         <td>';
-                    
-                        echo '<button class="btn btn-success btn-xs btnReserva" idReserva="' . $value["id"] . '"><i class="fas fa-plus"></i>Agregar</button>';
-                    
-                    
-                    echo '<td>
-                                <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id"]. '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
+
+                      echo '<button class="btn btn-success btn-xs btnReserva recuperar" idReserva="' . $value["id"] . '"><i class="fas fa-plus"></i>Agregar</button>';
+
+
+                      echo '<td>
+                                <button class="btn btn-default btn-xs btnEditarSede" idSede="' . $value["id"] . '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
                             </td>
                         </tr>';
-                }
-                ?>
+                    }
+                    ?>
 
-                   
-                 </tbody>
-               </table>
-             </div>
-             <!-- /.table-responsive -->
-           </div>
-           <!-- /.card-body -->
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
         </div>
-         <!-- /.card -->
-       </div>
+
+
+
+
+
+        <!-- tabla de herramientas -->
+
+        <!-- TABLE: LATEST ORDERS (Segunda tabla) -->
+        <div class="col-12 col-md-12 order-2 order-md-3">
+          <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h3 class="card-title text-blue font-weight-bold">Herramientas</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0 ">
+              <div class="table-responsive">
+                <table class="table m-0">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Descripcion</th>
+                      <th>Disponibles</th>
+                      <th>Acciones</th>
+                      <th></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+
+                    $item = null;
+                    $valor = null;
+                    $reservas_h = ControladorReservas::ctrMostrarReservasH($item, $valor);
+                    foreach ($reservas_h as $key => $value) {
+                      echo '<tr>
+                        <td>' . ($key + 1) . '</td>
+                        <td>' . $value["descripcion"] . '</td>
+                        <td>' . $value["disponibles"] . '</td>
+                        
+                        
+                        <td>';
+
+                      echo '<button class="btn btn-success btn-xs btnReservaH devolver" idHerramienta="' . $value["id_herramienta"] . '" estadoSede="Inactiva"><i class="fas fa-plus"></i>Agregar</button>';
+
+
+                      echo '<td>
+                                <button class="btn btn-default btn-xs btnEditarSede" idSede="' . $value["id_herramienta"] . '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
+                            </td>
+                        </tr>';
+                    }
+                    ?>
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+      </div>
 
       <!-- tabla de solicitud -->
-      <div class="col-12 col-md-6"> <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
+      <div class="col-12 col-md-6 order-3 order-md-2">
+        <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
         <div class="card">
           <div class="card-header border-transparent">
             <h3 class="card-title text-blue font-weight-bold">Solicitud</h3>
           </div>
           <!-- /.card-header -->
-          <div class="card-body p-0 nuevoProducto">
+          <div class="card-body p-0 ">
             <div class="table-responsive">
               <table class="table m-0">
                 <thead>
                   <tr>
-                    <th>Descripcion</th>
+                    <th>Producto</th>
                     <th>Cantidad</th>
                     <th></th>
-
                   </tr>
                 </thead>
-                <tbody >
-                 
+                <tbody class="nuevoProducto">
 
-                  
 
                   <style>
                     /* Botón sin color de fondo y borde */
@@ -174,67 +238,20 @@
           </div>
           <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-      </div>
-    </div>
-
-    <!-- tabla de herramientas -->
-    <div class="row">
-      <!-- TABLE: LATEST ORDERS (Segunda tabla) -->
-      <div class="col-12 col-md-6"> <!-- Columna que ocupa la mitad en pantallas medianas y grandes -->
-        <div class="card">
-          <div class="card-header border-transparent">
-            <h3 class="card-title text-blue font-weight-bold">Herramientas</h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body p-0 " >
-            <div class="table-responsive">
-              <table class="table m-0">
-                <thead>
-                  <tr>
-                  <th>#</th>
-                    <th>Descripcion</th>
-                    <th>Disponibles</th>
-                    <th>Acciones</th>
-                    <th></th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-
-                $item = null;
-                $valor = null;
-                $reservas_h = ControladorReservas::ctrMostrarReservasH($item, $valor);
-                foreach ($reservas_h as $key => $value) {
-                    echo '<tr>
-                        <td>' . ($key + 1) . '</td>
-                        <td>' . $value["descripcion"] . '</td>
-                        <td>' . $value["disponibles"] . '</td>
-                        
-                        
-                        <td>';
-                    
-                        echo '<button class="btn btn-success btn-xs btnRserva" idReserva="' . $value["id_herramienta"] . '" estadoSede="Inactiva"><i class="fas fa-plus"></i>Agregar</button>';
-                    
-                    
-                    echo '<td>
-                                <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id_herramienta"]. '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-file-alt"></i></button>
-                            </td>
-                        </tr>';
-                }
-                ?>
-                  
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
-          </div>
-          <!-- /.card-body -->
+        <div class="form-group">
+          <textarea id="inputDescription" class="form-control" rows="4" placeholder="Observaciones"></textarea>
+        </div>
+        <div class="col-12 witch-12 d-flex justify-content-end">
+          <button type="submit" value="cancelar" class="btn btn-danger w-25 mr-3">Cancelar</button>
+          <button type="submit" value="aceptar" class="btn btn-success w-25 ">Aceptar</button>
+        </div>
+        <div class="col-12 witch-12 p-3 d-flex justify-content-end">
+          <button type="submit" value="historial" class="btn btn-dark w-100 p-100">Historial</button>
         </div>
         <!-- /.card -->
       </div>
     </div>
+
 
 
 

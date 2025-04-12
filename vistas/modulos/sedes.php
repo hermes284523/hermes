@@ -9,7 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <button type="button" data-toggle="modal" data-target="#modalAgregar" class="btn btn-block btn-primary btn-sm">Agregar sede</button>
+                        <button type="button" data-toggle="modal" data-target="#modalAgregar"
+                            class="btn btn-block btn-primary btn-sm">Agregar sede</button>
                         </button>
                     </ol>
                 </div>
@@ -55,7 +56,7 @@
                                 echo '<button class="btn btn-danger btn-xs btnActivarSede" idSede="' . $value["id_sede"] . '" estadoSede="activa">Inactivo</button>';
                             }
                             echo '<td>
-                                        <button class="btn btn-default btn-xs btnEditarSede" idSede="'. $value["id_sede"]. '" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-default btn-xs btnEditarSede" idSede="' . $value["id_sede"] . '" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>';
                         }
@@ -86,28 +87,31 @@
                 <form method="post">
                     <div class="form-group">
                         <label for="nombreSede">Nombre</label>
-                        <input type="text" class="form-control" id="nombreSede" placeholder="Ingrese el nombre de la sede">
+                        <input type="text" class="form-control" id="nombreSede" name="nombreSede"
+                            placeholder="Ingrese el nombre de la sede">
                     </div>
                     <div class="form-group">
                         <label for="direccionSede">Dirección</label>
-                        <input type="text" class="form-control" id="direccionSede" name="direccionSede" placeholder="Ingrese la dirección de la sede">
+                        <input type="text" class="form-control" id="direccionSede" name="direccionSede"
+                            placeholder="Ingrese la dirección de la sede">
                     </div>
                     <div class="form-group">
                         <label for="descripcionSede">Descripción</label>
-                        <textarea class="form-control" id="descripcionSede" name="descripcionSede" rows="3" placeholder="Ingrese una descripción"></textarea>
+                        <textarea class="form-control" id="descripcionSede" name="descripcionSede" rows="3"
+                            placeholder="Ingrese una descripción"></textarea>
 
                     </div>
                     <div class="modal-footer justify-content-start">
                         <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+                        <?php
+
+                        $crearsede = new ControladorSedes();
+                        $crearsede->ctrCrearSedes();
+
+                        ?>
                     </div>
-                    
-                    <?php
-
-                        $item = null;
-                        $valor = null;
-                        $sedes = ControladorSedes::ctrCrearSedes($item, $valor);
-
-                    ?>
 
                 </form>
             </div>
@@ -132,26 +136,28 @@
                     <input type="hidden" id="idEditSede" name="idEditSede">
                     <div class="form-group">
                         <label for="nombreEditSede">Nombre</label>
-                        <input type="text" class="form-control" id="nombreEditSede" placeholder="Ingrese el nombre de la sede">
+                        <input type="text" class="form-control" id="nombreEditSede"
+                            placeholder="Ingrese el nombre de la sede">
                     </div>
                     <div class="form-group">
                         <label for="direccionEditSede">Dirección</label>
-                        <input type="text" class="form-control" id="direccionEditSede" placeholder="Ingrese la dirección de la sede">
+                        <input type="text" class="form-control" id="direccionEditSede"
+                            placeholder="Ingrese la dirección de la sede">
                     </div>
                     <div class="form-group">
                         <label for="descripcionEditSede">Descripción</label>
-                        <textarea class="form-control" id="descripcionEditSede" rows="3" placeholder="Ingrese una descripción"></textarea>
+                        <textarea class="form-control" id="descripcionEditSede" rows="3"
+                            placeholder="Ingrese una descripción"></textarea>
                     </div>
-                
+
             </div>
             <div class="modal-footer justify-content-start">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
             <?php
 
-            $item = null;
-            $valor = null;
-            $sedes = ControladorSedes::ctrEditarSedes($item, $valor);
+            $sedes = new ControladorSedes();
+            $sedes->ctrEditarSedes();
 
             ?>
             </form>

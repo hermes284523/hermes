@@ -136,17 +136,17 @@
                     <input type="hidden" id="idEditSede" name="idEditSede">
                     <div class="form-group">
                         <label for="nombreEditSede">Nombre</label>
-                        <input type="text" class="form-control" id="nombreEditSede"
+                        <input type="text" class="form-control" id="nombreEditSede"name="nombreEditSede"
                             placeholder="Ingrese el nombre de la sede">
                     </div>
                     <div class="form-group">
                         <label for="direccionEditSede">Dirección</label>
-                        <input type="text" class="form-control" id="direccionEditSede"
+                        <input type="text" class="form-control" id="direccionEditSede" name="direccionEditSede"
                             placeholder="Ingrese la dirección de la sede">
                     </div>
                     <div class="form-group">
                         <label for="descripcionEditSede">Descripción</label>
-                        <textarea class="form-control" id="descripcionEditSede" rows="3"
+                        <textarea class="form-control" id="descripcionEditSede" name="descripcionEditSede" rows="3"
                             placeholder="Ingrese una descripción"></textarea>
                     </div>
 

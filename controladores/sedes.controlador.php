@@ -74,13 +74,13 @@ class ControladorSedes
     {
         if (isset($_POST['nombreEditSede']) && isset($_POST['direccionEditSede']) && isset($_POST['descripcionEditSede'])) {
 
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreSede"]) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccionSede"])) {
+            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreEditSede"]) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccionEditSede"])) {
                 $tabla = "sedes";
                 $datos = array(
                     "id" => $_POST["idEditSede"],
                     "nombre" => $_POST["nombreEditSede"],
                     "direccion" => $_POST["direccionEditSede"],
-                    "desccripcion" => $_POST["descripcionEditSede"],
+                    "descripcion" => $_POST["descripcionEditSede"],
                 );
                 $respuesta = ModeloSedes::mdlEditarSede($tabla, $datos);
                 if ($respuesta == "ok") {

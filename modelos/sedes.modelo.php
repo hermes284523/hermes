@@ -66,7 +66,7 @@
         static public function mdlCambiarEstadoSede($valorId, $valorEstado){
             $stmt = Conexion::conectar()->prepare("UPDATE sedes SET estado=:estado WHERE id_sede = :id_sede");
             $stmt->bindParam("id_sede", $valorId, PDO::PARAM_INT);
-            $stmt->bindParam("estado", $valorEstado, PDO::PARAM_INT);
+            $stmt->bindParam("estado", $valorEstado, PDO::PARAM_STR);
 
             if($stmt->execute()){
                 return "ok";

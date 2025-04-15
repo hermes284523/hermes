@@ -3,11 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2025 a las 22:43:34
+-- Tiempo de generación: 15-04-2025 a las 19:16:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
-
------------------------CREAR LA BASE DE DATOS LLAMADA hermes_db-----------------------
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +38,26 @@ CREATE TABLE `aprendices_ficha` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `equipos_r`
+--
+
+CREATE TABLE `equipos_r` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `disponibles` int(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `equipos_r`
+--
+
+INSERT INTO `equipos_r` (`id`, `descripcion`, `disponibles`) VALUES
+(1, 'Portatil', 4),
+(2, 'TV', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `fichas`
 --
 
@@ -53,6 +71,26 @@ CREATE TABLE `fichas` (
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `herramienta_r`
+--
+
+CREATE TABLE `herramienta_r` (
+  `id_herramienta` int(11) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `disponibles` int(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `herramienta_r`
+--
+
+INSERT INTO `herramienta_r` (`id_herramienta`, `descripcion`, `disponibles`) VALUES
+(1, 'kit herramientas', 8),
+(2, 'extension', 12);
 
 -- --------------------------------------------------------
 
@@ -121,8 +159,16 @@ CREATE TABLE `sedes` (
   `direccion` varchar(255) DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
-  `estado` varchar(50) DEFAULT NULL
+  `estado` enum('activa','inactiva') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `sedes`
+--
+
+INSERT INTO `sedes` (`id_sede`, `nombre_sede`, `direccion`, `descripcion`, `fecha_creacion`, `estado`) VALUES
+(1, 'bicentenario', 'carrera 34 numero 8', 'centro formativo 5', '0000-00-00 00:00:00', 'inactiva'),
+(2, 'buga', 'centro de tulua con traversal 12', 'ambiente de educacion #2', '2025-04-12 17:55:33', 'activa');
 
 -- --------------------------------------------------------
 
@@ -132,15 +178,22 @@ CREATE TABLE `sedes` (
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
-  'cedula' varchar(15) NOT NULL,
+  `cedula` varchar(15) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `correo_electronico` varchar(255) NOT NULL,
   `nombre_usuario` varchar(100) NOT NULL,
   `clave` varchar(255) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
-  `estado` varchar(50) DEFAULT NULL
+  `estado` enum('activo','inactivo') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `cedula`, `nombre`, `apellido`, `correo_electronico`, `nombre_usuario`, `clave`, `fecha_registro`, `estado`) VALUES
+(1, '1004511288', 'alojo', 'arboleda', 'arbo@gmail.com', 'alojo2003', '2003', '2025-04-11 05:00:00', 'activo');
 
 -- --------------------------------------------------------
 
@@ -167,12 +220,24 @@ ALTER TABLE `aprendices_ficha`
   ADD KEY `id_ficha` (`id_ficha`);
 
 --
+-- Indices de la tabla `equipos_r`
+--
+ALTER TABLE `equipos_r`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `fichas`
 --
 ALTER TABLE `fichas`
   ADD PRIMARY KEY (`id_ficha`),
   ADD UNIQUE KEY `codigo` (`codigo`),
   ADD KEY `id_sede` (`id_sede`);
+
+--
+-- Indices de la tabla `herramienta_r`
+--
+ALTER TABLE `herramienta_r`
+  ADD PRIMARY KEY (`id_herramienta`);
 
 --
 -- Indices de la tabla `modulos`
@@ -232,10 +297,22 @@ ALTER TABLE `aprendices_ficha`
   MODIFY `id_aprendiz_ficha` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `equipos_r`
+--
+ALTER TABLE `equipos_r`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `fichas`
 --
 ALTER TABLE `fichas`
   MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `herramienta_r`
+--
+ALTER TABLE `herramienta_r`
+  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `modulos`
@@ -259,13 +336,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `sedes`
 --
 ALTER TABLE `sedes`
-  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

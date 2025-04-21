@@ -25,30 +25,34 @@
                 <thead>
                   <tr>
                     <th>Identificacion</th>
-                    <th>Nombre/Rol</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
                     <th>Ficha</th>
                     <th>Fecha</th>
-                    <th>Placa</th>
+                    <th>Serial</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>123456</td>
-                    <td>Juan Perez / Admin</td>
+                    <td>Juan Perez</td>
+                    <td>Admin</td>
                     <td>F123</td>
                     <td>2023-10-01</td>
                     <td>ABC123</td>
                   </tr>
                   <tr>
                     <td>789012</td>
-                    <td>Maria Lopez / User</td>
+                    <td>Maria Lopez</td>
+                    <td>User</td>
                     <td>F456</td>
                     <td>2023-10-02</td>
                     <td>XYZ789</td>
                   </tr>
                   <tr>
                     <td>345678</td>
-                    <td>Carlos Ruiz / Manager</td>
+                    <td>Carlos Ruiz</td>
+                    <td>Manager</td>
                     <td>F789</td>
                     <td>2023-10-03</td>
                     <td>LMN456</td>

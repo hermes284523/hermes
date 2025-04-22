@@ -1,5 +1,6 @@
 $(document).on("click", "#btnBuscarSolicitante", function () {
   idSolicitante = $("#NumeroIdSolicitante").val();
+  console.log(idSolicitante);
   // Validar que el campo no esté vacío
   if (idSolicitante === "") {
     alert("Por favor, ingrese un número de identificación.");

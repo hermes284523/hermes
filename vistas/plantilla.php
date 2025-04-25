@@ -103,6 +103,7 @@
           $_GET["ruta"] == "inventario" ||
           $_GET["ruta"] == "recepcion" ||
           $_GET["ruta"] == "solicitudes" ||
+          $_GET["ruta"] == "inmediatas" ||
           $_GET["ruta"] == "solicitudesold" ||
           $_GET["ruta"] == "autorizaciones" ||
           $_GET["ruta"] == "vencidas" ||

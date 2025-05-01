@@ -34,11 +34,11 @@ class ModeloSolicitudes{
                                                     )
                                                 )"
                                             );
+                                            
 
         $stmt->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
         $stmt->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
-
-        // error_log("Fecha Inicio: $fechaInicio, Fecha Fin: $fechaFin", 0); 
+        
 
         if ($stmt->execute()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -49,6 +49,23 @@ class ModeloSolicitudes{
         $stmt->close();
         $stmt = null;
     } // fin del metodo mdlMostrarEquiposDisponible
+
+
+    static public function mdlMostrarHistorial($tabla, $item, $valor){
+        if ($item != null) {
+            // continue;
+            $stmt = Conexion::conectar()->prepare("SELECT *  FROM $tabla WHERE $item = :$item");
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        $stmt->close();
+        $stmt = null;
+    }
 
     static public function mdlGuardarSolicitud($tabla, $datos){
 

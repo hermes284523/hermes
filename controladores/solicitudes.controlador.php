@@ -1,18 +1,35 @@
 <?php
 
-class ControladorSolicitudes{
 
-    static public function ctrMostrarEquiposDisponible($fechaInicio, $fechaFin){
+
+class ControladorSolicitudes
+{
+
+    static public function ctrMostrarEquiposDisponible($fechaInicio, $fechaFin)
+    {
         $respuesta = ModeloSolicitudes::mdlMostrarEquiposDisponible($fechaInicio, $fechaFin);
         return $respuesta;
     }
 
-    static public function ctrGuardarSolicitud($datos){
+    static public function ctrMostrarHistorial($item, $valor)
+    {
+        $tabla = "prestamos";
+        $item = "usuario_id"; 
+        $valor = $_SESSION["id_usuario"]; 
+        $respuesta = ModeloSolicitudes::mdlMostrarHistorial($tabla, $item, $valor);
+
+        return $respuesta;
+    }
+
+
+
+    static public function ctrGuardarSolicitud($datos)
+    {
 
         //si la fecha inicio es igual a la fecha fin el tipo_prestamo es "imediata"
-        if($datos["fechaInicio"] == $datos["fechaFin"]){
+        if ($datos["fechaInicio"] == $datos["fechaFin"]) {
             $tipo_prestamo = "imediata";
-        }else{
+        } else {
             $tipo_prestamo = "reservada";
         }
 
@@ -30,8 +47,8 @@ class ControladorSolicitudes{
         $tabla = "prestamos";
         $respuesta = ModeloSolicitudes::mdlGuardarSolicitud($tabla, $datos);
         return $respuesta;
-        
+
     }
 
-    
+
 }

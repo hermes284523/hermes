@@ -106,12 +106,14 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" name="NumeroIdSolicitante" id="NumeroIdSolicitante" placeholder="Número" required>
+                                            <input type="text" class="form-control" name="NumeroIdSolicitante"
+                                                id="NumeroIdSolicitante" placeholder="Número" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-group">
-                                            <button class="btn btn-primary" id="btnBuscarSolicitante"><i class="fas fa-search"></i></button>
+                                            <button class="btn btn-primary" id="btnBuscarSolicitante"><i
+                                                    class="fas fa-search"></i></button>
                                         </div>
 
                                     </div>
@@ -166,6 +168,7 @@
                                                 <?php
                                                 // Loop through the equipos and display them in the table
                                                 foreach ($respuesta as $key => $value) {
+
                                                     echo '<tr>
                                                         <td>' . $value["descripcion"] . '</td>
                                                         <td>' . $value["etiqueta"] . '</td>
@@ -173,6 +176,7 @@
                                                         <td>' . $value["ubicacion_nombre"] . '</td>
                                                         <td> <button class="btn btn-primary btn-sm btnAgregarEquipo recoverButton" idEquipoAgregar="' . $value["equipo_id"] . '"><i class="fas fa-plus"></i> Agregar</button></td>
                                                     </tr>';
+
                                                 }
 
 
@@ -221,7 +225,8 @@
                                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                                 </div>
                                                 <input type="hidden" name="idSolicitante" id="idSolicitante">
-                                                <input type="text" class="form-control" name="nombreSolicitante" id="nombreSolicitante" placeholder="Nombre solicitante" readonly>
+                                                <input type="text" class="form-control" name="nombreSolicitante"
+                                                    id="nombreSolicitante" placeholder="Nombre solicitante" readonly>
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +239,8 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control float-right" id="initialDate" value="<?php echo $hoy; ?>">
+                                                    <input type="text" class="form-control float-right" id="initialDate"
+                                                        value="<?php echo $hoy; ?>">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">
                                                             <i class="fas fa-arrow-right"></i>
@@ -249,7 +255,8 @@
                                                             <i class="far fa-calendar-alt"></i>
                                                         </span>
                                                     </div>
-                                                    <input type="text" class="form-control float-right" id="finalDate" value="<?php echo $hoy; ?>">
+                                                    <input type="text" class="form-control float-right" id="finalDate"
+                                                        value="<?php echo $hoy; ?>">
                                                 </div>
                                                 <!-- /.input group -->
                                             </div>
@@ -284,8 +291,10 @@
                                 <div class="card-footer">
 
                                     <div class="action-buttons">
-                                        <button type="button" class="btn btn-danger btnCancelarSolicitud">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary btnGuardarSolicitud">Aceptar</button>
+                                        <button type="button"
+                                            class="btn btn-danger btnCancelarSolicitud">Cancelar</button>
+                                        <button type="submit"
+                                            class="btn btn-primary btnGuardarSolicitud">Aceptar</button>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +312,8 @@
                     <div class="infoEquiposSolicitados d-none">
 
                         <div class="card">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalHistoricoSolicitudes">Historial</button>
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+                                data-target="#modalHistoricoSolicitudes">Historial</button>
                         </div>
 
                     </div>
@@ -322,4 +332,72 @@
         </div>
 
     </section>
+</div>
+
+
+
+<!-- Modal para historico de solicitudes -->
+
+<div class="modal fade" id="modalHistoricoSolicitudes">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title">Historical solicitudes</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="tblModalHistoricoSolicitudes" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID Solicitud</th>
+                                <th>Solicitud</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            
+
+                            // Fetch the list of Sedes
+                            $item = null;
+                            $valor = null;
+                            $historial = ControladorSolicitudes::ctrMostrarHistorial($item, $valor);
+                            
+                           
+                            
+                            // Loop through the Sedes and display them in the table
+                            foreach ($historial as $key => $value) {
+                                echo '<tr>
+                                <td>' . ($key + 1) . '</td>
+                                 <td>' . $value["tipo_prestamo"] . '</td>
+                                 <td>' . $value["fecha_solicitud"] . '</td>
+                                    
+                                 <td>';
+                               
+                                    echo '<button class="btn btn-primary btn-sm"><i class="fas fa-file-alt"></i></button>';
+                                    
+                                 '</tr>';
+                            }
+
+                            ?>
+                            
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
 </div>

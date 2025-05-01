@@ -14,6 +14,8 @@
         public $idSolicitante;
         public $equipos;
         public $observaciones;
+       
+        
 
         
         /*=============================================
@@ -29,6 +31,8 @@
             echo json_encode($respuesta);
         }
 
+        
+
         public function ajaxTraerEquipo()
         {
             $item = "equipo_id";
@@ -36,6 +40,8 @@
             $respuesta = ControladorEquipos::crtMostrarEquipos($item, $valor);
             echo json_encode($respuesta);
         }
+
+        
 
         public function ajaxGuardarSolicitud()
         {
@@ -59,6 +65,8 @@ if (isset($_POST["fechaInicio"]) && isset($_POST["fechaFin"])) {
     $solicitud->ajaxMostrarEquiposDisponible();
 }
 
+
+
 if (isset($_POST["idEquipoAgregar"])) {
     $solicitud = new AjaxSolicitudes();
     $solicitud->idEquipoAgregar = $_POST["idEquipoAgregar"];
@@ -74,6 +82,9 @@ if (isset($_POST["idSolicitante"]) && isset($_POST["equipos"])) {
     $solicitud->observaciones = $_POST["observaciones"];
     $solicitud->ajaxGuardarSolicitud();    
 }
+
+
+
     
 
 

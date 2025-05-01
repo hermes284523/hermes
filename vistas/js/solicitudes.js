@@ -264,3 +264,26 @@ $('#reservation').on('apply.daterangepicker', function(ev, picker) {
         }
       });
     });
+
+
+  $(document).on("click", ".verDetalle", function () {
+    // $(".btnEditarSede").click(function () {
+        var idHistorial = $(this).attr("idHistorial");
+        var datos = new FormData();
+        datos.append("idHistorial", idHistorial);
+        $.ajax({
+            url: "ajax/solicitudes.ajax.php",
+            method: "POST",
+            data: datos,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (respuesta) {
+                 console.log("SEDEEEEEED", respuesta);
+                
+                
+            },
+        });
+    });
+  

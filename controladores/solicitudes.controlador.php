@@ -21,6 +21,14 @@ class ControladorSolicitudes
         return $respuesta;
     }
 
+    static public function ctrMostrarDetalleHistorial($item, $valor)
+    {
+        $tabla = "prestamos";
+        $respuesta = ModeloSolicitudes::mdlMostrarDetalleHistorial($tabla, $item, $valor);
+
+        return $respuesta;
+    }
+
 
 
     static public function ctrGuardarSolicitud($datos)

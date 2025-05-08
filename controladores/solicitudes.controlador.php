@@ -14,8 +14,8 @@ class ControladorSolicitudes
     static public function ctrMostrarHistorial($item, $valor)
     {
         $tabla = "prestamos";
-        $item = "usuario_id"; 
-        $valor = $_SESSION["id_usuario"]; 
+        $item = "usuario_id";
+        $valor = $_SESSION["id_usuario"];
         $respuesta = ModeloSolicitudes::mdlMostrarHistorial($tabla, $item, $valor);
 
         return $respuesta;
@@ -42,12 +42,15 @@ class ControladorSolicitudes
         }
 
         $datos = array(
-            "fecha_inicio" => $datos["fechaInicio"],
-            "fecha_fin" => $datos["fechaFin"],
+
+            "idSolicitante" => $datos["idSolicitante"],
             "tipo_prestamo" => $tipo_prestamo,
-            "motivo" => $datos["observaciones"],
+            "fechaInicio" => $datos["fechaInicio"],
+            "fechaFin" => $datos["fechaFin"],
             "estado_prestamo" => "pendiente",
-            "usuario_id" => $datos["idSolicitante"]
+            "observaciones" => $datos["observaciones"],
+           
+
         );
 
 

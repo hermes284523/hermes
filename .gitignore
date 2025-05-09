@@ -5,6 +5,9 @@ AdminLTE/
 *.DS_Store
 *.log
 
+# Htaccess
+.htaccess
+
 # Archives
 *.zip
 

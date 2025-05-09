@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hermes 2847523 Beta</title>
 
+    <link rel="shortcut icon" href="vistas/img/H_Hermes_logo.png" type="image/x-icon">
     
     <!-- Google Font: Source Sans Pro -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
@@ -60,7 +61,7 @@
 
 
 
-<body class="hold-transition sidebar-mini login-page">
+<body class="hold-transition sidebar-collapse sidebar-mini login-page">
 <!-- Site wrapper -->
 
 
@@ -79,10 +80,11 @@
 
 
     echo '<div class="wrapper">';
-    include "modulos/cabezote.php";
-    include "modulos/menu.php";
+    include "modulos/cabezote.php"; //Cargando el cabezote de la pagina
+    include "modulos/menu.php"; //Cargando el menu de la pagina
 
-    if (isset($_GET["ruta"])) {
+    //Lista blanca
+    if (isset($_GET["ruta"])) { //Obteniendo la ruta de la pagina para cargar el controlador que llega desde el index.php
       if ($_GET["ruta"] == "inicio" ||
           $_GET["ruta"] == "fichas" ||
           $_GET["ruta"] == "sedes" ||
@@ -126,5 +128,6 @@
   <script src="vistas/js/permisos.js"></script>
   <script src="vistas/js/modulos.js"></script>
   <script src="vistas/js/usuarios.js"></script>
+  <script src="vistas/js/equipos.js"></script>
 </body>
 </html>

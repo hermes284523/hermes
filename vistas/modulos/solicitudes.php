@@ -303,20 +303,14 @@
 
                             <?php
 
-                            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                                $datos = [
-                                    "idSolicitante" => $_POST["idSolicitante"],
-                                    "fechaInicio" => $_POST["fechaInicio"],
-                                    "fechaFin" => $_POST["fechaFin"],
-                                    "observaciones" => $_POST["observaciones"],
-                                   
-                                ];
 
-                            }
+                            $datos = [
+                                "idSolicitante" => $_POST["idSolicitante"],
+                                "fechaInicio" => $_POST["fechaInicio"],
+                                "fechaFin" => $_POST["fechaFin"],
+                                "observaciones" => $_POST["observaciones"],
 
-
-
-
+                            ];
                             $crearSolicitud = new ControladorSolicitudes();
                             $crearSolicitud->ctrGuardarSolicitud($datos);
                             ?>

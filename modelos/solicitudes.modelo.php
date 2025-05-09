@@ -2,10 +2,12 @@
 
 require_once "conexion.php";
 
-class ModeloSolicitudes{
+class ModeloSolicitudes
+{
 
-    static public function mdlMostrarEquiposDisponible($fechaInicio, $fechaFin){
-        
+    static public function mdlMostrarEquiposDisponible($fechaInicio, $fechaFin)
+    {
+
         $stmt = Conexion::conectar()->prepare("SELECT e.*,
                                                     c.nombre AS categoria_nombre,
                                                     u.nombre AS ubicacion_nombre,
@@ -33,12 +35,12 @@ class ModeloSolicitudes{
                                                         )
                                                     )
                                                 )"
-                                            );
-                                            
+        );
+
 
         $stmt->bindParam(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
         $stmt->bindParam(":fechaFin", $fechaFin, PDO::PARAM_STR);
-        
+
 
         if ($stmt->execute()) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -51,11 +53,12 @@ class ModeloSolicitudes{
     } // fin del metodo mdlMostrarEquiposDisponible
 
 
-    static public function mdlMostrarHistorial($tabla, $item, $valor){
+    static public function mdlMostrarHistorial($tabla, $item, $valor)
+    {
         if ($item != null) {
             // continue;
             $stmt = Conexion::conectar()->prepare("SELECT *  FROM $tabla WHERE $item = :$item");
-            $stmt->bindParam(":".$item, $valor, PDO::PARAM_INT);
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll();
         } else {
@@ -67,12 +70,13 @@ class ModeloSolicitudes{
         $stmt = null;
     }
 
-    static public function mdlMostrarDetalleHistorial($tabla, $item, $valor){
+    static public function mdlMostrarDetalleHistorial($tabla, $item, $valor)
+    {
         if ($item != null) {
             var_dump($item, $valor);
             // continue;
             $stmt = Conexion::conectar()->prepare("SELECT *  FROM $tabla WHERE $item = :$item");
-            $stmt->bindParam(":".$item, $valor, PDO::PARAM_INT);
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch();
         } else {
@@ -84,11 +88,12 @@ class ModeloSolicitudes{
         $stmt = null;
     }
 
-    static public function mdlGuardarSolicitud($tabla, $datos){
+    static public function mdlGuardarSolicitud($tabla, $datos)
+    {
 
         $conexion = Conexion::conectar();
 
-        try{
+        try {
             $conexion->beginTransaction();
 
             $stmt = $conexion->prepare("INSERT INTO $tabla (usuario_id, tipo_prestamo, fecha_inicio, fecha_fin, estado_prestamo, motivo) VALUES (:usuario_id, :tipo_prestamo, :fechaInicio, :fechaFin, :estado_prestamo, :motivo)");
@@ -112,11 +117,13 @@ class ModeloSolicitudes{
             $conexion->commit();
             return "ok";
 
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             $conexion->rollBack();
+            // Muestra el error real para depuración
+            echo "Error en la base de datos: " . $e->getMessage();
             return "error";
-        }       
-        
+        }
+
     } //metodo mdlGuardarSolicitud
 
 }//ModeloSolicitudes

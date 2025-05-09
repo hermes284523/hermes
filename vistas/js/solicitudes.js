@@ -197,7 +197,10 @@ $('#reservation').on('apply.daterangepicker', function(ev, picker) {
     
   });
 
+  
+
   $("#idFormularioSolicitud").on("submit",  function(){
+    
     //obtener datos del formulario
     let idSolicitante = $("#idSolicitante").val();
     let fechaInicio = $("#initialDate").val();

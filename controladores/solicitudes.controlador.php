@@ -36,9 +36,9 @@ class ControladorSolicitudes
 
         //si la fecha inicio es igual a la fecha fin el tipo_prestamo es "imediata"
         if ($datos["fechaInicio"] == $datos["fechaFin"]) {
-            $tipo_prestamo = "imediata";
+            $tipo_prestamo = "Inmediato";
         } else {
-            $tipo_prestamo = "reservada";
+            $tipo_prestamo = "Reservado";
         }
 
         $datos = array(
@@ -49,7 +49,7 @@ class ControladorSolicitudes
             "fechaFin" => $datos["fechaFin"],
             "estado_prestamo" => "pendiente",
             "observaciones" => $datos["observaciones"],
-           
+            "equipos" => $datos["equipos"] ?? []  // importante para el foreach
 
         );
 

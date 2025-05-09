@@ -14,7 +14,7 @@
         public $idSolicitante;
         public $equipos;
         public $observaciones;
-       
+        public $idHistorial;
         
 
         
@@ -41,10 +41,17 @@
             echo json_encode($respuesta);
         }
 
-        
+        public function ajaxHistorial()
+        {
+            $item = "id_prestamo";
+            $valor = $this->idHistorial;
+            $respuesta = ControladorSolicitudes::ctrMostrarDetalleHistorial($item, $valor);
+            echo json_encode($respuesta);
+        }
 
         public function ajaxGuardarSolicitud()
         {
+            
             $datos = array(
                 "idSolicitante" => $this->idSolicitante,
                 "equipos" => $this->equipos,
@@ -82,7 +89,11 @@ if (isset($_POST["idSolicitante"]) && isset($_POST["equipos"])) {
     $solicitud->observaciones = $_POST["observaciones"];
     $solicitud->ajaxGuardarSolicitud();    
 }
-
+if (isset($_POST["idHistorial"])) {
+    $solicitud = new AjaxSolicitudes();
+    $solicitud->idHistorial = $_POST["idHistorial"];
+    $solicitud->ajaxHistorial();
+}
 
 
     
